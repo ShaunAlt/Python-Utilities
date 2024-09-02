@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shaunalt_utils"
+version = "1.0.0a1"
+dependencies = [
+    "concurrent-log-handler>=0.9.20",
+]
+requires-python = ">= 3.9"
+authors = [
+    {name = "Shaun Altmann", email = "shaunalt10@gmail.com"},
+]
+maintainers = [
+    {name = "Shaun Altmann", email = "shaunalt10@gmail.com"},
+]
+description = "A collection of utility objects and methods."
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = []
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+]
+
+[project.urls]
+Repository = "https://github.com/ShaunAlt/Python-Utilities"
+Issues = "https://github.com/ShaunAlt/Python-Utilities/issues"
