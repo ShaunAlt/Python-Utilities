@@ -27,9 +27,16 @@ Contents
 from __future__ import annotations
 
 # used for type-hinting
+from types import (
+    TracebackType, # traceback types
+)
+
+# used for type-hinting
 from typing import (
     Any, # any type
     Dict, # dictionary type
+    Optional, # optional type
+    Type, # type-hinted type
 )
 
 
@@ -157,7 +164,7 @@ def to_str(obj: Any, lvl: int) -> str:
 # =============================================================================
 class OBJ(object):
     '''
-    Base Object Definition
+    Base Object
     -
     Represents a base object with generic functionality that all other objects
     can inherit from.
@@ -173,9 +180,19 @@ class OBJ(object):
 
     Custom Methods
     -
+    - __del__() : `None`
+        - Instance Method.
+        - Called after the object's garbage collection has occurred (once all
+            references to the object have been destroyed).
+    - __enter__() : `OBJ`
+        - Instance Method.
+        - Called when execution enters the context of the `with` statement.
     - __eq__(other) : `bool`
         - Instance Method.
         - Used to check if the current object is equal to another object.
+    - __exit__(exc_type, exc_value, exc_tb) : `None`
+        - Instance Method.
+        - Called when execution leaves the context of the `with` statement.
     - __gt__(other) : `bool`
         - Instance Method.
         - Used to check if the current object is greater than another object.
@@ -213,6 +230,46 @@ class OBJ(object):
     _DATA = Dict[str, Any]
     ''' Collection of data from an object. '''
 
+    # ==========
+    # Destructor
+    def __del__(self) -> None:
+        '''
+        Destructor
+        -
+        Called after the object's garbage collection has occurred (once all
+        references to the object have been destroyed).
+
+        Parameters
+        -
+        None
+
+        Returns
+        -
+        None
+        '''
+
+        return None
+    
+    # ===========
+    # Entry Point
+    def __enter__(self) -> 'OBJ':
+        '''
+        Entry Point
+        -
+        Called when execution enters the context of the `with` statement.
+
+        Parameters
+        -
+        None
+
+        Returns
+        -
+        - `OBJ`
+            - Object the `with` statement was implemented on.
+        '''
+
+        return self
+
     # ==============
     # Equality Check
     def __eq__(self, other: Any) -> bool:
@@ -236,6 +293,38 @@ class OBJ(object):
             f'OBJ.__eq__(other = {other}) not defined in ' \
             + f'{self.__class__.__name__}.'
         )
+    
+    # ==========
+    # Exit Point
+    def __exit__(
+            self,
+            exc_type: Optional[Type[BaseException]],
+            exc_val: Optional[BaseException],
+            exc_tb: Optional[TracebackType]
+    ) -> None:
+        '''
+        Exit Point
+        -
+        Called when execution leaves the context of the `with` statement.
+
+        Parameters
+        -
+        - exc_type : `Type[BaseException] | None`
+            - `None` if no exception was raised.
+            - Type of exception that was raised during execution.
+        - exc_val : `BaseException | None`
+            - `None` if no exception was raised.
+            - Exception that was raised during execution.
+        - exc_tb : `TracebackType | None`
+            - `None` if no exception was raised.
+            - Traceback of the exception that was raised during execution.
+
+        Returns
+        -
+        None
+        '''
+
+        return None
     
     # ================
     # Inequality Check
