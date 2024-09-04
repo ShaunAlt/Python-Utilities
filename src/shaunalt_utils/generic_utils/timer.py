@@ -2,19 +2,22 @@
 # Created By - Shaun Altmann
 # =============================================================================
 '''
-Python Utilities - Generic - Base Object
+Python Utilities - Generic - Timer Object
 -
-Contains the definition for the base object that all other objects can inherit
-from.
+Contains the definition for the timer object that is used for timing sections
+of code.
 
 Contents
 -
-- to_str(obj, lvl) : `str`
-    - Converts a single object to a single or multiple line string. Used by the
-        `OBJ.__repr__`, `OBJ.__str__`, and `OBJ.debug` methods.
-- `OBJ`
-    - Represents a base object with generic functionality that all other
-        objects can inherit from.
+- `TIMER`
+    - Used for timing sections of code - measuring elapsed time with
+        `perf_counter_ns`.
+
+Future Versions
+-
+- Instead of always using the `perf_counter_ns` function, users should be able
+    to parse their own function that the `TIMER` instance would implement
+    instead.
 '''
 # =============================================================================
 
