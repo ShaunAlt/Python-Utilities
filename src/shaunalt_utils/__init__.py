@@ -52,9 +52,9 @@ Contents
 # )
 
 # email objects + methods
-# from .email_utils import (
-
-# )
+from .email_utils import (
+    Email, # email model
+)
 
 # error objects + methods
 # from .error_utils import (

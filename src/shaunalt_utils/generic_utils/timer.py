@@ -57,7 +57,7 @@ class TIMER(OBJ):
 
     Custom Attributes
     -
-    - _logger : `Logger`
+    - _logger : `logging.Logger`
         - Logger used for logging all of the timing information to a timing log
             file.
     - _lvl : `int`

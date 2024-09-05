@@ -2,29 +2,28 @@
 # Created By - Shaun Altmann
 # =============================================================================
 '''
-Python Utilities - Emails
+Python Utilities - Emails - Custom Errors
 -
-Contains a collection of methods and objects used to simplify the process of
-creating and sending emails.
+Contains the definitions of the custom errors that are implemented in this
+sub-module.
 
 Contents
 -
-- `errors`
-    - Contains the definitions of the custom errors that are implemented in
-        this sub-module.
-- `model`
-    - Contains the definition of the main email object that stores all of the
-        information required to create a new email message.
+- `InvalidAttachmentError`
+    - Exception raised when an unsupported file type is encountered when trying
+        to add an attachment to an email.
 '''
 # =============================================================================
 
 
 # =============================================================================
-# Imports
+# Invalid Attachment File Type
 # =============================================================================
-
-# email mode
-from .model import Email
+class InvalidAttachmentError(Exception):
+    '''
+    Exception raised when an unsupported file type is encountered when trying
+    to add an attachment to an email.
+    '''
 
 
 # =============================================================================
