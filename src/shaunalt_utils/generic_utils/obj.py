@@ -26,10 +26,8 @@ Contents
 # used for string type hints
 from __future__ import annotations
 
-# used for type-hinting
-from types import (
-    TracebackType, # traceback types
-)
+# used for type-hinting traceback types
+from types import TracebackType
 
 # used for type-hinting
 from typing import (
