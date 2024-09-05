@@ -10,24 +10,34 @@ processes in various applications.
 Contents
 -
 - `decorator_utils`
-    - N/A.
+    - Contains a collections of methods that can be used as decorators for
+        functions.
 - `email_utils`
-    - N/A.
+    - Contains a collection of methods and objects that can be used to simplify
+        the process of creating and sending emails.
 - `error_utils`
-    - N/A.
+    - Contains a collection of methods and objects that can be used for
+        simplifying the process of handling and reporting errors.
 - `flask_utils`
-    - N/A.
+    - Contains a collection of methods used for simplifying the implementation
+        of the Flask web framework for building web applications.
 - `form_utils`
-    - N/A.
+    - Contains a collection of methods and objects that can be used for
+        creating form fields, manipulating and validating data, and generating
+        forms.
 - `generic_utils`
     - Contains a collection of generic objects and methods that all other parts
         of this package implement.
 - `sqlalchemy_utils`
-    - N/A.
+    - Contains a collection of methods and objects that can be used for
+        simplifying the implementation of the SQLAlchemy package for working
+        with databases.
 - `ui_utils`
-    - N/A.
+    - Contains a collection of objects and methods that can be used for
+        simplifying the dynamic creation of templated user interfaces.
 - `xlsx_utils`
-    - N/A.
+    - Contains a collection of methods that can be used for creating and
+        editing data in an XLSX document.
 '''
 # =============================================================================
 
