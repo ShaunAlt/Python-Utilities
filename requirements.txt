@@ -1,4 +1,6 @@
+concurrent-log-handler==0.9.25
 mypy==1.11.2
 mypy-extensions==1.0.0
+portalocker==2.10.1
 tomli==2.0.1
 typing_extensions==4.12.2
