@@ -9,9 +9,23 @@ the process of handling and reporting errors.
 
 Contents
 -
-TODO: Fix this
-- custom error handler - basic functions
-- flask route error handler
+- `handler_default`
+    - Contains the method that can be used to simplify the handling of errors.
+
+Dependencies
+-
+- `logging`
+    - Used for creating / getting loggers.
+    - Builtin.
+- `typing`
+    - Used for type hinting.
+    - Builtin.
+
+Internal Dependencies
+-
+- `generic_utils`
+    - Used for base object definition.
+    - `generic_utils`.
 '''
 # =============================================================================
 
@@ -19,6 +33,9 @@ TODO: Fix this
 # =============================================================================
 # Imports
 # =============================================================================
+
+# used for default error handling
+from .handler_default import error_handler
 
 
 # =============================================================================

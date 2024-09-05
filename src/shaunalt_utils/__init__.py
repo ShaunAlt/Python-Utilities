@@ -90,9 +90,9 @@ from .email_utils import (
 )
 
 # error objects + methods
-# from .error_utils import (
-
-# )
+from .error_utils import (
+    error_handler, # default error handler
+)
 
 # flask objects + methods
 # from .flask_utils import (
