@@ -12,6 +12,14 @@ Contents
 - `InvalidAttachmentError`
     - Exception raised when an unsupported file type is encountered when trying
         to add an attachment to an email.
+
+Dependencies
+-
+None
+
+Internal Dependencies
+-
+None
 '''
 # =============================================================================
 

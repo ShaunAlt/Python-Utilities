@@ -11,6 +11,22 @@ Contents
 - get_logger(...) : `logging.Logger`
     - Creates a logger for a particular module within a project with the
         specified values.
+    
+Dependencies
+-
+- `concurrent_log_handler`
+    - Used for creating a rotating file handler.
+    - `concurrent-log-handler==0.9.25`
+- `logging`
+    - Used for creating / getting loggers.
+    - Builtin.
+- `typing`
+    - Used for type hinting.
+    - Builtin.
+
+Internal Dependencies
+-
+None
 '''
 # =============================================================================
 

@@ -12,6 +12,27 @@ Contents
 - `TIMER`
     - Used for timing sections of code - measuring elapsed time with
         `perf_counter_ns`.
+    
+Dependencies
+-
+- `__future__`
+    - Used for string type hints.
+    - Builtin.
+- `logging`
+    - Used for creating / getting loggers.
+    - Builtin.
+- `time`
+    - Used for timing functionality.
+    - Builtin.
+- `typing`
+    - Used for type hinting.
+    - Builtin.
+
+Internal Dependencies
+-
+- `.obj`
+    - Used for base object definition.
+    - `generic_utils.obj`.
 
 Future Versions
 -

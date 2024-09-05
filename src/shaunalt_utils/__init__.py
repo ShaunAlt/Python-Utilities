@@ -38,6 +38,39 @@ Contents
 - `xlsx_utils`
     - Contains a collection of methods that can be used for creating and
         editing data in an XLSX document.
+
+Dependencies
+-
+- `__future__`
+    - Used for string type hints.
+    - Builtin.
+- `concurrent_log_handler`
+    - Used for creating a rotating file handler.
+    - `concurrent-log-handler==0.9.25`
+- `email`
+    - Used for creating email messages.
+    - Builtin.
+- `io`
+    - Used for storing raw file content.
+    - Builtin.
+- `logging`
+    - Used for creating / getting loggers.
+    - Builtin.
+- `mimetypes`
+    - Used for creating mimetypes for common file types.
+    - Builtin.
+- `smtplib`
+    - Used for connecting to the SMTP server.
+    - Builtin.
+- `time`
+    - Used for timing functionality.
+    - Builtin.
+- `types`
+    - Used for type hinting.
+    - Builtin.
+- `typing`
+    - Used for type hinting.
+    - Builtin.
 '''
 # =============================================================================
 

@@ -15,6 +15,22 @@ Contents
 - `OBJ`
     - Represents a base object with generic functionality that all other
         objects can inherit from.
+    
+Dependencies
+-
+- `__future__`
+    - Used for string type hints.
+    - Builtin.
+- `types`
+    - Used for type hinting.
+    - Builtin.
+- `typing`
+    - Used for type hinting.
+    - Builtin.
+
+Internal Dependencies
+-
+None
 '''
 # =============================================================================
 

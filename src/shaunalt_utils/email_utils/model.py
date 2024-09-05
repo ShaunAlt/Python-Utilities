@@ -12,6 +12,36 @@ Contents
 - `Email`
     - Represents an individual email that can be sent to specified addresses,
         containing the given data.
+
+Dependencies
+-
+- `email`
+    - Used for creating email messages.
+    - Builtin.
+- `io`
+    - Used for storing raw file content.
+    - Builtin.
+- `logging`
+    - Used for creating / getting loggers.
+    - Builtin.
+- `mimetypes`
+    - Used for creating mimetypes for common file types.
+    - Builtin.
+- `smtplib`
+    - Used for connecting to the SMTP server.
+    - Builtin.
+- `typing`
+    - Used for type hinting.
+    - Builtin.
+
+Internal Dependencies
+-
+- `generic_utils`
+    - Used for base object definition.
+    - `generic_utils`.
+- `.errors`
+    - Used for custom exceptions.
+    - `email_utils.errors`.
 '''
 # =============================================================================
 

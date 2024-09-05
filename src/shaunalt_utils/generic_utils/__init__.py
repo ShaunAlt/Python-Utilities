@@ -17,6 +17,31 @@ Contents
 - `timer`
     - Contains the definition for the timer object that is used for timing
         sections of code.
+
+Dependencies
+-
+- `__future__`
+    - Used for string type hints.
+    - Builtin.
+- `concurrent_log_handler`
+    - Used for creating a rotating file handler.
+    - `concurrent-log-handler==0.9.25`
+- `logging`
+    - Used for creating / getting loggers.
+    - Builtin.
+- `time`
+    - Used for timing functionality.
+    - Builtin.
+- `types`
+    - Used for type hinting.
+    - Builtin.
+- `typing`
+    - Used for type hinting.
+    - Builtin.
+
+Internal Dependencies
+-
+None
 '''
 # =============================================================================
 
