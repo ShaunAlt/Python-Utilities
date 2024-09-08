@@ -35,9 +35,6 @@ None
 # Imports
 # =============================================================================
 
-# used for creating a rotating file handler
-import concurrent_log_handler
-
 # used for creating / getting loggers
 import logging
 
@@ -118,6 +115,9 @@ def get_logger(
     - `logging.Logger`
         - Logger for the specified module.
     '''
+
+    # 3rd party package - used for creating a rotating file handler
+    import concurrent_log_handler
 
     # get the logger with the specified name
     l: logging.Logger = logging.getLogger(log_name)
