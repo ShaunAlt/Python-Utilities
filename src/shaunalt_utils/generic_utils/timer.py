@@ -104,7 +104,7 @@ class TIMER(OBJ):
         - `OBJ` Instance Method.
         - Called after the object's garbage collection has occurred (once all
             references to the object have been destroyed).
-    - __init__(name, lvl) : `None`
+    - __init__(name, logger, lvl=-1) : `None`
         - Instance Method.
         - Initializes the timer object.
     - _get_data(lvl=0) : `_OBJ.DATA`

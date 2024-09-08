@@ -13,6 +13,7 @@ TODO: Fix this
     - Outer/Inner decorator
     - @decorator1(extra_args,  ...) <- additional arguments to the decorator
     - def inner_func(...): ...
+- flask error handler route decorator.
 '''
 # =============================================================================
 
