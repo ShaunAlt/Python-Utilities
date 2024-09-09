@@ -194,6 +194,9 @@ class OBJ(object):
 
     Custom Methods
     -
+    - __call__(*args, **kwargs) : `Any`
+        - Instance Method.
+        - Runs when the current object is called as a function.
     - __del__() : `None`
         - Instance Method.
         - Called after the object's garbage collection has occurred (once all
@@ -213,6 +216,9 @@ class OBJ(object):
     - __hash__() : `int`
         - Instance Method.
         - Used to calculate the hash value of the current object.
+    - __html__() : `str`
+        - Instance Method.
+        - Creates a HTML representation of the current object.
     - __init__(*args, **kwargs) : `None`
         - Instance Method.
         - Used to construct a new instance of the object.
@@ -243,6 +249,32 @@ class OBJ(object):
     # Constants
     _DATA = Dict[str, Any]
     ''' Collection of data from an object. '''
+
+    # =============
+    # Instance Call
+    def __call__(self, *args: Any, **kwargs: Any) -> Any:
+        '''
+        Instance Call
+        -
+        Runs when the current object is called as a function.
+
+        Parameters
+        -
+        - *args : `Any`
+            - Positional arguments to the current object instance call.
+        - **kwargs : `Any`
+            - Keyword arguments to the current object instance call.
+
+        Returns
+        -
+        - `Any`
+            - Return value of the current object instance call.
+        '''
+
+        raise NotImplementedError(
+            f'OBJ().__call__(*args = {args}, **kwargs = {kwargs}) not ' \
+            + f'defined in {self.__class__.__name__}.'
+        )
 
     # ==========
     # Destructor
@@ -385,6 +417,28 @@ class OBJ(object):
 
         raise NotImplementedError(
             f'OBJ.__hash__() not defined in {self.__class__.__name__}.'
+        )
+    
+    # ===============
+    # Get Object HTML
+    def __html__(self) -> str:
+        '''
+        Get Object HTML
+        -
+        Creates a HTML representation of the current object.
+
+        Parameters
+        -
+        None
+
+        Returns
+        -
+        - `str`
+            - HTML representation of the current object.
+        '''
+
+        raise NotImplementedError(
+            f'OBJ.__html__() not defined in {self.__class__.__name__}.'
         )
     
     # ===========
