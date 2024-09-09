@@ -3,6 +3,7 @@ click==8.1.7
 concurrent-log-handler==0.9.25
 Flask==3.0.3
 Flask-Login==0.6.3
+Flask-SQLAlchemy==3.1.1
 importlib_metadata==8.4.0
 itsdangerous==2.2.0
 Jinja2==3.1.4
@@ -10,6 +11,7 @@ MarkupSafe==2.1.5
 mypy==1.11.2
 mypy-extensions==1.0.0
 portalocker==2.10.1
+SQLAlchemy==2.0.34
 tomli==2.0.1
 typing_extensions==4.12.2
 Werkzeug==3.0.4
