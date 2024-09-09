@@ -8,7 +8,7 @@ Contains the decorators that can be used for flask functions and routes.
 
 Contents
 -
-- flask_error_handler : `(F) -> F`
+- flask_error_handler : `(...) -> (F) -> F`
     - Decorator for handling exceptions raised in the decorated method, and
         then returning a `flask.abort` code.
     

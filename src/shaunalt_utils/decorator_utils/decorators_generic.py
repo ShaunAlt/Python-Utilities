@@ -8,7 +8,8 @@ Contains the decorators that can be used for generic methods.
 
 Contents
 -
-None
+- method_timer : `(logging.Logger, int) -> (F) -> F`
+    - Decorator for timing the the decorated method.
     
 Dependencies
 -
@@ -23,6 +24,7 @@ Internal Dependencies
 -
 - `generic_utils`
     - Used for base + timing objects.
+    - `generic_utils`.
 '''
 # =============================================================================
 
