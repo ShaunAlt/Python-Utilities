@@ -182,9 +182,9 @@ class XLSX_Book(OBJ):
         '''
 
         # 3rd party library imports
-        from xlsxwriter import Workbook # xlsx workbook
-        from xlsxwriter.format import Format # cell format
-        from xlsxwriter.worksheet import Worksheet # xlsx sheet
+        from xlsxwriter import Workbook # type: ignore # xlsx workbook
+        from xlsxwriter.format import Format # type: ignore # cell format
+        from xlsxwriter.worksheet import Worksheet # type: ignore # xlsx sheet
 
         # initialize variables
         b: Workbook # xlsx workbook object
