@@ -14,12 +14,21 @@ Contents
     
 Dependencies
 -
+- `flask`
+    - Used for flask framework functionality.
+    - `flask==3.0.3`
+- `flask-login`
+    - Used for getting the current user logged into the session.
+    - `flask-login==0.6.3`
 - `logging`
     - Used for creating / getting loggers.
     - Builtin.
 - `typing`
     - Used for type hinting.
     - Builtin.
+- `werkzeug`
+    - Used for identifying werkzeug HTTP exceptions compared to regular errors.
+    - `werkzeug==3.0.4`
 
 Internal Dependencies
 -
