@@ -2,33 +2,36 @@
 # Created By - Shaun Altmann
 # =============================================================================
 '''
-Python Utilities - XLSX
+Python Utilities - XLSX - Custom Errors
 -
-Contains a collection of methods that can be used for creating and editing data
-in an XLSX document.
+Contains the definitions of the custom errors that are implemented in this
+sub-module.
 
 Contents
 -
-- `errors`
-    - Contains the definitions of the custom errors that are implemented in
-        this sub-module.
-- `models`
-    - Contains the definitions of the model objects used for creating .xlsx
-        files.
+- `PreExistingColumnID`
+    - Exception raised when a new header column is being added to an xlsx
+        sheet, but the new id already exists in that sheet.
+
+Dependencies
+-
+None
+
+Internal Dependencies
+-
+None
 '''
 # =============================================================================
 
 
 # =============================================================================
-# Imports
+# Pre-Existing Column ID
 # =============================================================================
-
-# xlsx models
-from .models import (
-    XLSX_Book, # .xlsx book file
-    XLSX_Header, # individual sheet header
-    XLSX_Sheet, # individual sheet
-)
+class PreExistingColumnID(Exception):
+    '''
+    Exception raised when a new header column is being added to an xlsx sheet,
+    but the new id already exists in that sheet.
+    '''
 
 
 # =============================================================================
