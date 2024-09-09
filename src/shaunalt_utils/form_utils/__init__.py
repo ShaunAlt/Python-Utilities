@@ -12,7 +12,7 @@ Contents
 - `errors`
     - Contains the definitions of the custom errors that are implemented in
         this sub-module.
-- `field_generation`
+- `generator`
     - Contains the method used for dynamically creating form fields.
 TODO: Fix this
 - create field.
@@ -45,6 +45,11 @@ Internal Dependencies
 # =============================================================================
 # Imports
 # =============================================================================
+
+# field generator
+from .generator import (
+    create_field, # dynamically create form fields
+)
 
 
 # =============================================================================

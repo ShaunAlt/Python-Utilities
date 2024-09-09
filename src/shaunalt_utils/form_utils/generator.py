@@ -2,7 +2,7 @@
 # Created By - Shaun Altmann
 # =============================================================================
 '''
-Python Utilities - Forms - Field Generation
+Python Utilities - Forms - Field Generator
 -
 Contains the method used for dynamically creating form fields.
 
