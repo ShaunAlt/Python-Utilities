@@ -8,7 +8,7 @@ Contains the decorators that can be used for SQLAlchemy methods.
 
 Contents
 -
-- `convert_id_to_model` : `(sqlalchemy.Column) -> (F) -> F`
+- `sqlalchemy_id_to_model` : `(sqlalchemy.Column, str, str, bool) -> (F) -> F`
     - Decorator for converting a given single column id into a 
     
 Dependencies
@@ -30,6 +30,11 @@ None
 # =============================================================================
 # Imports
 # =============================================================================
+
+# used for custom errors
+from .errors import (
+    InvalidIDError, # invalid id
+)
 
 # used for wrapping functions in decorators
 from functools import wraps
@@ -64,7 +69,12 @@ F = TypeVar('F', bound = Callable[..., Any])
 # =============================================================================
 # ID to BaseModel
 # =============================================================================
-def convert_id_to_basemodel(col: Column) -> Callable[[F], F]:
+def sqlalchemy_id_to_basemodel(
+        col: Column,
+        param_name_idx: str = 'idx',
+        param_name_item: str = 'item',
+        nullable: bool = True
+) -> Callable[[F], F]:
     '''
     ID to BaseModel
     -
@@ -75,6 +85,16 @@ def convert_id_to_basemodel(col: Column) -> Callable[[F], F]:
     - col : `sqlalchemy.Column`
         - `BaseModel.col_name`. This is the column object that will be used
             to filter the `idx` parameter to get the `BaseModel` object.
+    - param_name_idx : `str`
+        - Defaults to `"idx"`, meaning that the keyword parameter that will be
+            used to get the data from will be "idx".
+    - param_name_item : `str`
+        - Defaults to `"item"`, meaning that the `BaseModel` object retrieved
+            from the idx will be stored under this keyword argument name.
+    - nullable : `bool`
+        - Defaults to `True`, meaning that if the `param_name_idx` value is not
+            present, or the `param_name_idx` value results in a non-existent
+            `BaseModel` object, the function will still run without error.
 
     Returns
     -
@@ -89,13 +109,29 @@ def convert_id_to_basemodel(col: Column) -> Callable[[F], F]:
             # get idx from kwargs
             idx: Optional[int] = None
             try:
-                if 'idx' in kwargs:
-                    if kwargs['idx'] is not None:
-                        idx = int(kwargs['idx'])
-            except
-            idx = kwargs.pop('idx') # type: ignore # remove idx from kwargs
-            model = col.type.mapper.class_(id=idx) # type: ignore # get BaseModel instance
-            kwargs['model'] = model # add model to kwargs
+                if param_name_idx in kwargs:
+                    if kwargs[param_name_idx] is not None:
+                        idx = int(kwargs[param_name_idx])
+            except:
+                raise InvalidIDError(
+                    f'Invalid {param_name_idx} Parameter Value'
+                )
+
+            # validate idx value
+            if (idx is None) and (not nullable):
+                raise InvalidIDError(f'{param_name_idx} Parameter is Required')
+
+            # get model from idx
+            obj: None = None
+            raise NotImplementedError('sqlalchemy_id_to_basemodel() not fully defined')
+            if (obj is None) and (not nullable):
+                raise InvalidIDError(
+                    f'IDX Parameter Value {param_name_idx} Resulted in ' \
+                    + 'NoneType.'
+                )
+            kwargs[param_name_item] = obj
+
+            # run function
             return func(*args, **kwargs)
         return cast(F, wrapper)
     return decorator
