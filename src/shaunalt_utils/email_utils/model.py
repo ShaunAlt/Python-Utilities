@@ -138,7 +138,7 @@ class Email(OBJ):
         - Instance Method.
         - Converts an attachment file to a `MIMEBase` object which can be
             attached to an email message.
-    - _get_data(lvl=0) : `_OBJ.DATA`
+    - _get_data(lvl=0) : `OBJ._DATA`
         - `OBJ` Instance Method.
         - Produces a `dict` of keys and values of the data from the object.
     - _to_msg(smtp_sender, bounce_address=None) : `MIMEMultipart`
