@@ -15,6 +15,8 @@ Contents
 - `nav`
     - Contains the objects that can be used to create a dynamic navigation
         menu.
+- `table`
+    - Contains the objects that can be used to create a dynamic table.
 TODO: Fix this
 - Page
 - Table/Row/Btns/Desc.
@@ -31,9 +33,16 @@ TODO: Fix this
 
 # navigation menu objects
 from .nav import (
-    Nav_OBJ, # generic navigation object
-    Nav_Button, # individual button in the navigation menu
-    Nav_Dropdown, # dropdown menu containing child `Nav_OBJ` objects
+    UI_Nav_OBJ, # generic navigation object
+    UI_Nav_Button, # individual button in the navigation menu
+    UI_Nav_Dropdown, # dropdown menu containing child `Nav_OBJ` objects
+)
+
+# table objects
+from .table import (
+    UI_Table, # main table
+    UI_Table_Btns, # table buttons
+    UI_Table_Row, # table row
 )
 
 

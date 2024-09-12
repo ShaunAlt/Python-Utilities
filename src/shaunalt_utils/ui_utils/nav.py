@@ -8,12 +8,12 @@ Contains the objects that can be used to create a dynamic navigation menu.
 
 Contents
 -
-- `Nav_OBJ`
+- `UI_Nav_OBJ`
     - Base class for navigation objects, containing key shared functionality.
-- `Nav_Button`
+- `UI_Nav_Button`
     - Individual button in the navigation menu that can be used to go to a
         specific route.
-- `Nav_Dropdown`
+- `UI_Nav_Dropdown`
     - Dropdown menu that can be used to display a list of options in the
         navigation menu.
     
@@ -49,17 +49,15 @@ from .errors import (
 
 # used for type hinting
 from typing import (
-    Any, # any type
     List, # list type
     Optional, # optional type
-    Type, # type of object type
 )
 
 
 # =============================================================================
 # Generic Navigation Object Definition
 # =============================================================================
-class Nav_OBJ(OBJ):
+class UI_Nav_OBJ(OBJ):
     '''
     Generic Navigation Object
     -
@@ -400,7 +398,7 @@ class Nav_OBJ(OBJ):
 # =============================================================================
 # Navigation Button Definition
 # =============================================================================
-class Nav_Button(Nav_OBJ):
+class UI_Nav_Button(UI_Nav_OBJ):
     '''
     Navigation Button
     -
@@ -501,7 +499,7 @@ class Nav_Button(Nav_OBJ):
 # =============================================================================
 # Navigation Dropdown Definition
 # =============================================================================
-class Nav_Dropdown(Nav_OBJ):
+class UI_Nav_Dropdown(UI_Nav_OBJ):
     '''
     Navigation Dropdown
     -
@@ -509,7 +507,7 @@ class Nav_Dropdown(Nav_OBJ):
 
     Custom Attributes
     -
-    - _children : `list[Nav_OBJ]`
+    - _children : `list[UI_Nav_OBJ]`
         - Collection of child navigation elements contained within the current
             dropdown menu.
 
@@ -528,11 +526,11 @@ class Nav_Dropdown(Nav_OBJ):
 
     Custom Properties
     -
-    - children : `list[Nav_OBJ]`
+    - children : `list[UI_Nav_OBJ]`
         - Collection of child navigation elements.
     - route : `str | None`
         - Route to create a "GET" request that will return a collection of
-            `Nav_OBJ` navigation elements. This is used for lazy-loading
+            `UI_Nav_OBJ` navigation elements. This is used for lazy-loading
             navigation elements to reduce initial loading time.
     - visible : `bool`
         - Flag used to indicate whether or not the navigation element should be
@@ -544,7 +542,7 @@ class Nav_Dropdown(Nav_OBJ):
     def __init__(
             self,
             label: str,
-            children: Optional[List['Nav_OBJ']] = None,
+            children: Optional[List['UI_Nav_OBJ']] = None,
             route: Optional[str] = None,
             current: bool = False,
             icon: Optional[str] = None,
@@ -572,14 +570,14 @@ class Nav_Dropdown(Nav_OBJ):
         )
 
         # creating child elements list
-        self._children: list[Nav_OBJ] = [] if children is None else children
+        self._children: list[UI_Nav_OBJ] = [] if children is None else children
         ''' Collection of child navigation elements contained within the
             current dropdown menu. '''
 
     # ===================
     # Property - Children
     @property
-    def children(self) -> List['Nav_OBJ']:
+    def children(self) -> List['UI_Nav_OBJ']:
         ''' Collection of child navigation elements. '''
         return self._children
 
@@ -588,7 +586,7 @@ class Nav_Dropdown(Nav_OBJ):
     @property
     def route(self) -> Optional[str]:
         ''' Route to create a "GET" request that will return a collection of
-            `Nav_OBJ` navigation elements. This is used for lazy-loading
+            `UI_Nav_OBJ` navigation elements. This is used for lazy-loading
             navigation elements to reduce initial loading time. '''
         return self._route
 
@@ -627,6 +625,7 @@ class Nav_Dropdown(Nav_OBJ):
             data['children'] = self.children
 
         return data
+
 
 # =============================================================================
 # End of File
