@@ -79,6 +79,10 @@ def flask_error_handler(
         display_req: bool = True,
         email_creator: Optional[Callable[[Exception], Email]] = None,
         flash_restart: bool = True,
+        smtp_server: str = 'SMTP',
+        smtp_port: int = 465,
+        smtp_sender: str = 'noreply@hostname',
+        smtp_bounce: Optional[str] = 'bounce@hostname'
 ) -> Callable[[F], F]:
     '''
     Flask Error Handler
@@ -163,7 +167,12 @@ def flask_error_handler(
 
                 # email error - if required
                 if email_creator is not None:
-                    email_creator(e).send()
+                    email_creator(e).send(
+                        smtp_server = smtp_server,
+                        smtp_port = smtp_port,
+                        smtp_sender = smtp_sender,
+                        bounce_address = smtp_bounce
+                    )
 
                 # abort with failure code
                 abort(abort_code)

@@ -31,11 +31,6 @@ None
 # Imports
 # =============================================================================
 
-# used for custom errors
-from .errors import (
-    InvalidIDError, # invalid id
-)
-
 # used for wrapping functions in decorators
 from functools import wraps
 
@@ -113,19 +108,19 @@ def sqlalchemy_id_to_basemodel(
                     if kwargs[param_name_idx] is not None:
                         idx = int(kwargs[param_name_idx])
             except:
-                raise InvalidIDError(
+                raise ValueError(
                     f'Invalid {param_name_idx} Parameter Value'
                 )
 
             # validate idx value
             if (idx is None) and (not nullable):
-                raise InvalidIDError(f'{param_name_idx} Parameter is Required')
+                raise ValueError(f'{param_name_idx} Parameter is Required')
 
             # get model from idx
             obj: None = None
             raise NotImplementedError('sqlalchemy_id_to_basemodel() not fully defined')
             if (obj is None) and (not nullable):
-                raise InvalidIDError(
+                raise ValueError(
                     f'IDX Parameter Value {param_name_idx} Resulted in ' \
                     + 'NoneType.'
                 )
