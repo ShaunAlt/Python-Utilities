@@ -19,6 +19,9 @@ Contents
     
 Dependencies
 -
+- `__future__`
+    - Used for string type hints.
+    - Builtin.
 - `typing`
     - Used for type hinting.
     - Builtin.
@@ -28,9 +31,6 @@ Internal Dependencies
 - `generic_utils`
     - Used for base object definition.
     - `generic_utils`.
-- `.errors`
-    - Used for custom errors.
-    - `ui_utils.errors`.
 '''
 # =============================================================================
 
@@ -42,10 +42,8 @@ Internal Dependencies
 # used for base object definition
 from ..generic_utils import OBJ
 
-# used for custom errors
-from .errors import (
-    NavButtonRouteError, # invalid button route
-)
+# used for string type hints
+from __future__ import annotations
 
 # used for type hinting
 from typing import (
@@ -471,8 +469,7 @@ class UI_Nav_Button(UI_Nav_OBJ):
             Typically used to go to a new page in the application. '''
 
         # validate route is not empty
-        if self._route is None:
-            raise NavButtonRouteError('Button route is None.')
+        if self._route is None: raise ValueError('Button route is None.')
         return self._route
     
     # ==================

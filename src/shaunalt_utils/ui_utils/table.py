@@ -18,6 +18,9 @@ Contents
     
 Dependencies
 -
+- `__future__`
+    - Used for string type hints.
+    - Builtin.
 - `typing`
     - Used for type hinting.
     - Builtin.
@@ -37,6 +40,9 @@ Internal Dependencies
 
 # used for base object definition
 from ..generic_utils import OBJ
+
+# used for string type hints
+from __future__ import annotations
 
 # used for type hinting
 from typing import (
@@ -736,7 +742,7 @@ class UI_Table_Row(OBJ):
 
     Custom Methods
     -
-    - __init__(id, cells, btns, children=None, depth=0) : `None`
+    - __init__(id, cells, btns, route_func, children=None, depth=0) : `None`
         - Instance Method.
         - Creates a new table row.
     - _get_data(lvl=0) : `OBJ._DATA`
