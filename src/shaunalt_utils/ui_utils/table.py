@@ -40,6 +40,7 @@ from ..generic_utils import OBJ
 
 # used for type hinting
 from typing import (
+    Any, # any type
     Callable, # callable type (function)
     Dict, # dict type
     List, # list type
@@ -68,6 +69,12 @@ class UI_Table(OBJ):
             data from the table.
     - _btns_table : `UI_Table_Btns`
         - Collection of button flags for the overall table.
+    - _desc : `str`
+        - Description of the table that will be displayed above it.
+    - _form : `Any | None`
+        - Form that can be used to filter the data in the table. Defaults to
+            `None`, meaning that no filter form will be created for the current
+            table.
     - _headers : `list[tuple[str, int]]`
         - Collection of column headers (text, col-width) for the table.
     - _rows : `list[UI_Table_Row] | str`
@@ -77,6 +84,8 @@ class UI_Table(OBJ):
     - _search : `str | None`
         - If `str`, contains the route to use to get the search results for the
             table. If `None`, no search will be performed for the table.
+    - _title : `str`
+        - Title of the table.
 
     Custom Constants
     -
@@ -99,6 +108,10 @@ class UI_Table(OBJ):
         - Collection of buttons (label, route, tooltip) for downloading data.
     - btns_table : `list[str]`
         - Collection of button flags to include in the table.
+    - desc : `str`
+        - Table description.
+    - form : `Any | None`
+        - Form used to filter the data in the table.
     - headers : `list[tuple[str, int]]`
         - Collection of column headers (text, col-width) for the table.
     - rows_list : `list[UI_Table_Row]`
@@ -110,17 +123,22 @@ class UI_Table(OBJ):
     - search : `str | None`
         - If `str`, contains the route to use to search the table. If `None`,
             searching will not be performed for this table.
+    - title : `str`
+        - Table title.
     '''
 
     # ===========
     # Constructor
     def __init__(
             self,
+            title: str,
+            desc: str,
             headers: List[Tuple[str, int]],
             rows: Union[str, List['UI_Table_Row']],
             btns_add: Optional[List[Tuple[str, str, str]]] = None,
             btns_download: Optional[List[Tuple[str, str, str]]] = None,
-            search: Optional[str] = None
+            search: Optional[str] = None,
+            form: Optional[Any] = None
     ) -> None:
         # set buttons for adding new rows
         self._btns_add: List[Tuple[str, str, str]] = []
@@ -143,6 +161,16 @@ class UI_Table(OBJ):
                 for row in rows
             ])
 
+        # set table description
+        self._desc: str = desc
+        ''' Description of the table that will be displayed above it. '''
+
+        # set table form
+        self._form: Optional[Any] = form
+        ''' Form that can be used to filter the data in the table. Defaults to
+            `None`, meaning that no filter form will be created for the current
+            table. '''
+
         # set table headers
         self._headers: List[Tuple[str, int]] = headers
         ''' Collection of column headers (text, col-width) for the table. '''
@@ -158,6 +186,10 @@ class UI_Table(OBJ):
         ''' If `str`, contains the route to use to get the search results for
             the table. If `None`, no search will be performed for the
             table. '''
+        
+        # set table title
+        self._title: str = title
+        ''' Title of the table. '''
         
     # ============================
     # Property - Buttons - New Row
@@ -195,6 +227,20 @@ class UI_Table(OBJ):
             if k in self._btns_table.flags.keys()
         ]
     
+    # ======================
+    # Property - Description
+    @property
+    def desc(self) -> str:
+        ''' Table description. '''
+        return self._desc
+    
+    # ======================
+    # Property - Filter Form
+    @property
+    def form(self) -> Optional[Any]:
+        ''' Form used to filter the data in the table. '''
+        return self._form
+    
     # ==================
     # Property - Headers
     @property
@@ -228,6 +274,13 @@ class UI_Table(OBJ):
             searching will not be performed for this table. '''
         return self._search
     
+    # =====
+    # Title
+    @property
+    def title(self) -> str:
+        ''' Table title. '''
+        return self._title
+    
     # =============
     # OBJ: Get Data
     def _get_data(self, lvl: int = 0) -> OBJ._DATA:
@@ -236,36 +289,44 @@ class UI_Table(OBJ):
 
         # short representation
         if lvl == 0:
+            data['title'] = self.title
             data['headers'] = [h[0] for h in self.headers]
             data['btns'] = self.btns_table
-            data['rows_str'] = self.rows_str
-            data['rows_list'] = len(self.rows_list)
 
         # long representation
         elif lvl == 1:
             data['btns_add'] = self.btns_add
             data['btns_download'] = self.btns_download
             data['btns_table'] = self.btns_table
+            data['desc'] = self.desc
+            data['form'] = self.form
             data['headers'] = self.headers
             data['rows_list'] = self.rows_list
             data['rows_str'] = self.rows_str
             data['search'] = self.search
+            data['title'] = self.title
 
         # debug
         elif lvl == 2:
             data['_btns_add'] = self._btns_add
             data['_btns_download'] = self._btns_download
             data['_btns_table'] = self._btns_table
+            data['_desc'] = self._desc
+            data['_form'] = self._form
             data['_headers'] = self._headers
             data['_rows'] = self._rows
             data['_search'] = self._search
+            data['_title'] = self._title
             data['btns_add'] = self.btns_add
             data['btns_download'] = self.btns_download
             data['btns_table'] = self.btns_table
+            data['desc'] = self.desc
+            data['form'] = self.form
             data['headers'] = self.headers
             data['rows_list'] = self.rows_list
             data['rows_str'] = self.rows_str
             data['search'] = self.search
+            data['title'] = self.title
 
         return data
 
