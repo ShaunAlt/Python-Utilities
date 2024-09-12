@@ -33,9 +33,6 @@ Internal Dependencies
 - `generic_utils`
     - Used for base object definition.
     - `generic_utils`.
-- `.errors`
-    - Used for custom exceptions.
-    - `xlsx_utils.errors`.
 '''
 # =============================================================================
 
@@ -46,11 +43,6 @@ Internal Dependencies
 
 # used for base object
 from ..generic_utils import OBJ
-
-# used for custom exceptions
-from .errors import (
-    PreExistingColumnID,
-)
 
 # used for storing raw file content
 from io import BytesIO
@@ -502,7 +494,7 @@ class XLSX_Sheet(OBJ):
 
         # validate new header column id
         if header[0] in self.headers:
-            raise PreExistingColumnID(f'New ID {header[0]} already exists')
+            raise ValueError(f'New ID {header[0]} already exists')
 
         # create new header
         self._headers[header[0]] = (len(self.headers), header[1])
