@@ -22,11 +22,11 @@ None
 
 
 # =============================================================================
-# 
+# Invalid Navigation Button Route
 # =============================================================================
-class Exception(Exception):
+class NavButtonRouteError(Exception):
     '''
-    Exception raised when ...
+    Exception raised when the route of a navigation button is invalid.
     '''
 
 
