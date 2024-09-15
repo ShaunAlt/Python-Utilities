@@ -41,15 +41,21 @@ Contents
 
 Dependencies
 -
-- `__future__`
-    - Used for string type hints.
-    - Builtin.
 - `concurrent_log_handler`
     - Used for creating a rotating file handler.
     - `concurrent-log-handler==0.9.25`
 - `email`
     - Used for creating email messages.
     - Builtin.
+- `flask`
+    - Used for flask framework functionality.
+    - `flask==3.0.3`
+- `flask-login`
+    - Used for getting the current user logged into the session.
+    - `flask-login==0.6.3`
+- `flask_wtf`
+    - Used for the base flask form model used for creating all forms.
+    - `flask-wtf==1.2.1`.
 - `io`
     - Used for storing raw file content.
     - Builtin.
@@ -71,6 +77,15 @@ Dependencies
 - `typing`
     - Used for type hinting.
     - Builtin.
+- `werkzeug`
+    - Used for identifying werkzeug HTTP exceptions compared to regular errors.
+    - `werkzeug==3.0.4`
+- `wtforms`
+    - Used for type hinting and creating the form fields.
+    - `wtforms==3.1.2`.
+- `xlsxwriter`
+    - Used for creating the xlsx document.
+    - `xlsxwriter==3.2.0`
 '''
 # =============================================================================
 
@@ -80,9 +95,11 @@ Dependencies
 # =============================================================================
 
 # decorator objects + methods
-# from .decorator_utils import (
-
-# )
+from .decorator_utils import (
+    flask_error_handler, # flask route / method error handler
+    method_timer, # method timer decorator
+    sqlalchemy_id_to_basemodel, # convert to basemodel
+)
 
 # email objects + methods
 from .email_utils import (
@@ -100,9 +117,9 @@ from .error_utils import (
 # )
 
 # form objects + methods
-# from .form_utils import (
-
-# )
+from .form_utils import (
+    create_field, # dynamically create form fields
+)
 
 # generic objects + methods
 from .generic_utils import (
@@ -117,14 +134,22 @@ from .generic_utils import (
 # )
 
 # ui objects + methods
-# from .ui_utils import (
-
-# )
+from .ui_utils import (
+    UI_Nav_Button, # individual button in the navigation menu
+    UI_Nav_Dropdown, # dropdown menu containing child `Nav_OBJ` objects
+    UI_Nav_OBJ, # generic navigation object
+    UI_Page, # page object
+    UI_Table, # main table
+    UI_Table_Btns, # table buttons
+    UI_Table_Row, # table row
+)
 
 # xlsx objects + methods
-# from .xlsx_utils import (
-
-# )
+from .xlsx_utils import (
+    XLSX_Book, # xlsx book file
+    XLSX_Header, # individual sheet header
+    XLSX_Sheet, # individual sheet
+)
 
 
 # =============================================================================

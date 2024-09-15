@@ -121,13 +121,28 @@ def flask_error_handler(
     '''
 
     # import flask dependencies
-    from flask import (
-        abort, # used to abort with a http error
-        request, # used to get the http request data
-        session, # used to get the flask session data
-    )
-    from flask_login import current_user # type: ignore # used for current user 
-    from werkzeug.exceptions import HTTPException # http exception
+    try:
+        from flask import (
+            abort, # used to abort with a http error
+            request, # used to get the http request data
+            session, # used to get the flask session data
+        )
+    except:
+        pass
+
+    try:
+        from flask_login import current_user # type: ignore # used for current user 
+    except:
+        pass
+
+    try:
+        from werkzeug.exceptions import HTTPException # http exception
+    except:
+        raise ImportError(
+            'Failed to import `werkzeug` package. Please install using `pip ' \
+            + 'install werkzeug`. The minimum required version is 3.0.4 ' \
+            + '(`pip install werkzeug==3.0.4`).'
+        )
 
     # internal decorator
     def decorator(func: F) -> F:

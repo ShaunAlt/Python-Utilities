@@ -19,9 +19,6 @@ Contents
 
 Dependencies
 -
-- `__future__`
-    - Used for string type hints.
-    - Builtin.
 - `datetime`
     - Used for getting date/time.
     - Builtin.
@@ -44,9 +41,9 @@ Internal Dependencies
 
 # navigation menu objects
 from .nav import (
-    UI_Nav_OBJ, # generic navigation object
     UI_Nav_Button, # individual button in the navigation menu
     UI_Nav_Dropdown, # dropdown menu containing child `Nav_OBJ` objects
+    UI_Nav_OBJ, # generic navigation object
 )
 
 # page objects

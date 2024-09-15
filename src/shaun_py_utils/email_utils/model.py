@@ -39,9 +39,6 @@ Internal Dependencies
 - `generic_utils`
     - Used for base object definition.
     - `generic_utils`.
-- `.errors`
-    - Used for custom exceptions.
-    - `email_utils.errors`.
 '''
 # =============================================================================
 
@@ -52,11 +49,6 @@ Internal Dependencies
 
 # used for base object
 from ..generic_utils import OBJ
-
-# used for custom exceptions
-from .errors import (
-    InvalidAttachmentError,
-)
 
 # used for encoding email attachments
 from email import encoders
@@ -264,7 +256,7 @@ class Email(OBJ):
 
         # validate mimetype
         if (mime_type is None) or (len(mime_type.split('/')) != 2):
-            raise InvalidAttachmentError(file_name)
+            raise ValueError(file_name)
 
         # create attachment object from file data
         attachment = MIMEBase(

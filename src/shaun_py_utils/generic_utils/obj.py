@@ -18,9 +18,6 @@ Contents
     
 Dependencies
 -
-- `__future__`
-    - Used for string type hints.
-    - Builtin.
 - `types`
     - Used for type hinting.
     - Builtin.
@@ -38,9 +35,6 @@ None
 # =============================================================================
 # Imports
 # =============================================================================
-
-# used for string type hints
-from __future__ import annotations
 
 # used for type-hinting traceback types
 from types import TracebackType

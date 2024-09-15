@@ -18,9 +18,6 @@ Contents
     
 Dependencies
 -
-- `__future__`
-    - Used for string type hints.
-    - Builtin.
 - `typing`
     - Used for type hinting.
     - Builtin.
@@ -40,9 +37,6 @@ Internal Dependencies
 
 # used for base object definition
 from ..generic_utils import OBJ
-
-# used for string type hints
-from __future__ import annotations
 
 # used for type hinting
 from typing import (

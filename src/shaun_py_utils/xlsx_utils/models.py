@@ -174,9 +174,16 @@ class XLSX_Book(OBJ):
         '''
 
         # 3rd party library imports
-        from xlsxwriter import Workbook # type: ignore # xlsx workbook
-        from xlsxwriter.format import Format # type: ignore # cell format
-        from xlsxwriter.worksheet import Worksheet # type: ignore # xlsx sheet
+        try:
+            from xlsxwriter import Workbook # type: ignore # xlsx workbook
+            from xlsxwriter.format import Format # type: ignore # cell format
+            from xlsxwriter.worksheet import Worksheet # type: ignore # xlsx sheet
+        except:
+            raise ImportError(
+                'Failed to import the `xlsxwriter` module. Please install ' \
+                + 'the `pip install xlsxwriter`. The minimum required ' \
+                + 'version is 3.2.0 (`pip install xlsxwriter==3.2.0`).'
+            )
 
         # initialize variables
         b: Workbook # xlsx workbook object

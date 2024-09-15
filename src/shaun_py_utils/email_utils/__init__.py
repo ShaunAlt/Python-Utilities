@@ -9,9 +9,6 @@ creating and sending emails.
 
 Contents
 -
-- `errors`
-    - Contains the definitions of the custom errors that are implemented in
-        this sub-module.
 - `model`
     - Contains the definition of the main email object that stores all of the
         information required to create a new email message.
@@ -50,7 +47,7 @@ Internal Dependencies
 # Imports
 # =============================================================================
 
-# email mode
+# email model
 from .model import Email
 
 

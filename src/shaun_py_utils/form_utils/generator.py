@@ -22,9 +22,7 @@ Dependencies
 
 Internal Dependencies
 -
-- `.errors`
-    - Used for custom exceptions.
-    - `form_utils.errors`.
+None
 '''
 # =============================================================================
 
@@ -32,11 +30,6 @@ Internal Dependencies
 # =============================================================================
 # Imports
 # =============================================================================
-
-# used for custom exceptions
-from .errors import (
-    FieldTypeError, # invalid field type
-)
 
 # used for type hinting
 from typing import (
@@ -155,35 +148,42 @@ def create_field(
     '''
 
     # import field types
-    from wtforms.fields import (
-        BooleanField,
-        ColorField,
-        DateField,
-        DateTimeField,
-        DateTimeLocalField,
-        DecimalField,
-        DecimalRangeField,
-        EmailField,
-        FileField,
-        FloatField,
-        HiddenField,
-        IntegerField,
-        IntegerRangeField,
-        MonthField,
-        MultipleFileField,
-        PasswordField,
-        RadioField,
-        SearchField,
-        SelectField,
-        SelectMultipleField,
-        StringField,
-        SubmitField,
-        TelField,
-        TextAreaField,
-        TimeField,
-        WeekField,
-        URLField,
-    )
+    try:
+        from wtforms.fields import (
+            BooleanField,
+            ColorField,
+            DateField,
+            DateTimeField,
+            DateTimeLocalField,
+            DecimalField,
+            DecimalRangeField,
+            EmailField,
+            FileField,
+            FloatField,
+            HiddenField,
+            IntegerField,
+            IntegerRangeField,
+            MonthField,
+            MultipleFileField,
+            PasswordField,
+            RadioField,
+            SearchField,
+            SelectField,
+            SelectMultipleField,
+            StringField,
+            SubmitField,
+            TelField,
+            TextAreaField,
+            TimeField,
+            WeekField,
+            URLField,
+        )
+    except:
+        raise ImportError(
+            'Failed to import the `wtforms` package. Please install using ' \
+            + '`pip install wtforms`. The minimum required version is 3.1.2 ' \
+            + '(`pip install wtforms==3.1.2`).'
+        )
 
     # setting main render-keyword arguments
     kwargs['required'] = field_required
@@ -274,7 +274,7 @@ def create_field(
         return field_type(field_label, render_kw = kwargs)
     
     # invalid field type
-    raise FieldTypeError(f'Invalid Field Type = {field_type!r}')
+    raise TypeError(f'Invalid Field Type = {field_type!r}')
     
 
 

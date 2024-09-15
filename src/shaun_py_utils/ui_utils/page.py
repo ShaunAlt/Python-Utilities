@@ -13,9 +13,6 @@ Contents
     
 Dependencies
 -
-- `__future__`
-    - Used for string type hints.
-    - Builtin.
 - `datetime`
     - Used for getting date/time.
     - Builtin.
@@ -50,9 +47,6 @@ from .nav import UI_Nav_OBJ
 
 # used for creating page tables
 from .table import UI_Table
-
-# used for string type hints
-from __future__ import annotations
 
 # used for getting date/time
 from datetime import datetime

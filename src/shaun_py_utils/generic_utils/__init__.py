@@ -20,9 +20,6 @@ Contents
 
 Dependencies
 -
-- `__future__`
-    - Used for string type hints.
-    - Builtin.
 - `concurrent_log_handler`
     - Used for creating a rotating file handler.
     - `concurrent-log-handler==0.9.25`
@@ -50,10 +47,10 @@ None
 # Imports
 # =============================================================================
 
-# logger creation
+# get / create module logger
 from .logs import get_logger
 
-# base object
+# generic base object
 from .obj import OBJ
 
 # timer object

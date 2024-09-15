@@ -15,9 +15,6 @@ Contents
     
 Dependencies
 -
-- `__future__`
-    - Used for string type hints.
-    - Builtin.
 - `logging`
     - Used for creating / getting loggers.
     - Builtin.
@@ -49,9 +46,6 @@ Future Versions
 
 # used for base object definition
 from .obj import OBJ
-
-# used for string type hints
-from __future__ import annotations
 
 # used for logging data
 import logging

@@ -117,7 +117,15 @@ def get_logger(
     '''
 
     # 3rd party package - used for creating a rotating file handler
-    import concurrent_log_handler
+    try:
+        import concurrent_log_handler
+    except:
+        raise ImportError(
+            'Failed to import `concurrent_log_handler` package. Please ' \
+            + 'install using `pip install concurrent-log-handler`. The ' \
+            + 'minimum required version is 0.9.20 (`pip install ' \
+            + 'concurrent-log-handler==0.9.20`).'
+        )
 
     # get the logger with the specified name
     l: logging.Logger = logging.getLogger(log_name)
