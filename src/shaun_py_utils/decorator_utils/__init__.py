@@ -14,10 +14,6 @@ TODO: Fix this
     - @decorator1(extra_args,  ...) <- additional arguments to the decorator
     - def inner_func(...): ...
 - flask error handler route decorator.
-- sqlalchemy - convert id to `BaseModel` instance. Only works on tables with a
-    single PK column. Takes the `BaseModel.col_pk` column as an argument, and
-    uses it to get the `idx` parameter from the function parameters, and parse
-    the `BaseModel|None` instance returned.
 
 Dependencies
 -
@@ -61,11 +57,6 @@ from .decorators_flask import (
 # generic decorators
 from .decorators_generic import (
     method_timer, # method timer decorator
-)
-
-# sqlalchemy decorators
-from .decorators_sqlalchemy import (
-    sqlalchemy_id_to_basemodel, # convert to basemodel
 )
 
 
