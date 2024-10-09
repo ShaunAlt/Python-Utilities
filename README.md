@@ -193,7 +193,91 @@ Includes:
         ```
 
 ### 6. *Generic Functionality*
+- Logger Generator (`get_logger`)
+    - Creates a logger for a particular module within a project with the
+        specified values.
+    - Implementation Example:
+        ``` python
+        # import logger generator
+        from generic_utils import get_logger as _get_logger
+
+        # create customized logger generator with optional specialisations
+        def get_logger(
+                log_name = None,
+                error_logger = False,
+                timer_logger = False
+        ):
+            # override to create special error handler logger
+            if error_logger:
+                return _get_logger(
+                    "ERROR HANDLER",
+                    ...
+                )
+
+            # override to create special timing logger
+            if timer_logger:
+                return _get_logger(
+                    "TIMING LOGGER",
+                    ...
+                )
+
+            # create normal logger
+            return _get_logger(
+                log_name,
+                ...
+            )
+
+        # create various application loggers
+        log_normal = get_logger(__name__) # module logger
+        log_error = get_logger(error_logger = True) # error handler logger
+        log_timer = get_logger(timer_logger = True) # timer logger
+        ```
+- Base Object Definition (`OBJ`)
+    - Represents a base object with generic functionality that all other
+        objects can inherit from. It contains a lot of debugging and other
+        functionality that can easily be extended in child classes, effectively
+        providing a standardized base that all application objects can derive
+        from.
+    - Implementation Example:
+        ``` python
+        # import base object definition
+        from generic_utils import OBJ
+
+        # create custom object that will potentially require debugging etc.
+        class New_Class(OBJ):
+            ...
+        ```
+- Code Timer Object (`TIMER`)
+    - Used for timing sections of code, measuring the elapsed time in
+        nanoseconds. Can be used to help identify sections of code that are
+        causing lagging issues.
+    - Implementation Example:
+        ``` python
+        # import code timer object
+        from generic_utils import TIMER
+
+        # create function that will require timing
+        def test_function():
+            # create timer
+            t = TIMER(...)
+
+            # time various sections
+            with t.lap('Part 1 to time'):
+                pass
+
+            # time with indentation
+            with t.lap('Part 2 to time'):
+                with t.lap('Part 2.1'):
+                    pass
+                with t.lap('Part 2.2'):
+                    pass
+
+            return # timer will automatically stop itself with __del__
+        ```
+
 ### 7. *SQLAlchemy*
+- Not Yet Implemented.
+
 ### 8. *UI*
 - Navigation Menu Models
     - Base Navigation Object (`UI_Nav_OBJ`)
@@ -284,7 +368,7 @@ Includes:
         ``` python
         # import flask url creation functionality
         from flask import url_for
-        
+
         # import table models
         from ui_utils import UI_Table, UI_Table_Btns, UI_Table_Row
 
@@ -391,7 +475,7 @@ Includes:
 
         # create a new xlsx workbook
         book = XLSX_Book(sheets = [sheet])
-        book.add_sheet(new_sheet = sheet)
+        book.add_sheet(new_sheet = sheet) # add the sheet again
 
         # create an `io.BytesIO` object to store the file in-memory
         file = book.create()

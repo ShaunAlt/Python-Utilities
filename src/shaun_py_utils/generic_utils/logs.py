@@ -118,7 +118,7 @@ def get_logger(
 
     # 3rd party package - used for creating a rotating file handler
     try:
-        import concurrent_log_handler
+        import concurrent_log_handler # type: ignore
     except:
         raise ImportError(
             'Failed to import `concurrent_log_handler` package. Please ' \

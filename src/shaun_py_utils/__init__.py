@@ -98,7 +98,6 @@ Dependencies
 from .decorator_utils import (
     flask_error_handler, # flask route / method error handler
     method_timer, # method timer decorator
-    sqlalchemy_id_to_basemodel, # convert to basemodel
 )
 
 # email objects + methods
