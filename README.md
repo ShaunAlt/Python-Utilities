@@ -149,11 +149,128 @@ Includes:
         ```
 
 ### 4. *Flask*
+- Not Yet Implemented.
+
 ### 5. *Forms*
+- Field Generator
+    - Creates a new `wtforms.fields.Field` object containing templated keyword
+        arguments and attributes based on specified parameters.
+    - Implementation Example 1:
+        ``` python
+        # import the field generator
+        from form_utils import create_field
+
+        # import the wtforms field being created
+        from wtforms.fields import SubmitField
+
+        # create new "submit" button field
+        fld_submit = create_field(
+            field_type = SubmitField,
+            field_label = "Submit",
+            field_tooltip = "Submit the Current Data",
+            field_classes = ["form-button", "form-submit",]
+        )
+        ```
+    - Implementation Example 2:
+        ``` python
+        # import field generator
+        from form_utils import create_field
+
+        # import the wtforms field being created
+        from wtforms.field import StringField
+
+        # create new "name" input field that will run a javascript `submit()`
+        # function
+        fld_name = create_field(
+            field_type = StringField,
+            field_label = "Name:",
+            field_tooltip = "Input the Name Here",
+            field_placeholder = "Name ...",
+            field_required = False,
+            field_maxlength = 100,
+            onclick = "submit()"
+        )
+        ```
+
 ### 6. *Generic Functionality*
 ### 7. *SQLAlchemy*
 ### 8. *UI*
 ### 9. *XLSX*
+- XLSX Models
+    - XLSX Book
+        - Contains the data required to create an individual .xlsx workbook
+            file.
+    - XLSX Header
+        - Contains the data for a single column header in an .xlsx sheet.
+    - XLSX Sheet
+        - Contains the data required to create an individual sheet within an
+            .xlsx file.
+    - Implementation Example:
+        ``` python
+        # import xlsx sheet and header model
+        from xlsx_utils import XLSX_Book, XLSX_Header, XLSX_Sheet
+
+        # create all of the headers for a single sheet
+        headers = ( # list of tuple is used instead of dict to preserve order
+            (
+                "col1", # column id
+                XLSX_Header(label = "Header 1", width = 20), # header data
+            ),
+            (
+                "col2",
+                XLSX_Header(label = "Header 2", width = 30),
+            ),
+        )
+
+        # create all of the data for a single sheet
+        data = [ # list of dicts is used to preserve order of data rows
+            {
+                "col1": "hello", # row 0, "col1" cell value
+                "col2": "world",
+            },
+            {
+                "col2": "bar", # order doesn't matter because of column ids
+                "col1": "foo",
+            },
+        ]
+
+        # create an xlsx sheet
+        sheet = XLSX_Sheet(name = "Sheet 1", headers = headers, data = data)
+
+        # add another header to the sheet
+        sheet.add_header((
+            "col3",
+            XLSX_Header("Another Header", 50),
+        ))
+
+        # add another row of data to the sheet
+        sheet.add_row({
+            "col1": "will show in col1",
+            "col3": "will show in col3",
+            "col5": "no matching column id, so will not get displayed",
+        })
+
+        # create a new xlsx workbook
+        book = XLSX_Book(sheets = [sheet])
+        book.add_sheet(new_sheet = sheet)
+
+        # create an `io.BytesIO` object to store the file in-memory
+        file = book.create()
+
+        '''
+        Sheet Data Overview
+        +- (20 wide) -+- (30 wide) -+- (50 wide) -+
+        | Header 1    | Header 2    | Header 3    |
+        |-------------+-------------+-------------|
+        | hello       | world       |             |
+        |-------------+-------------+-------------|
+        | foo         | bar         |             |
+        |-------------+-------------+-------------|
+        | will show   |             | will show   |
+        | in col1     |             | in col3     |
+        |-------------+-------------+-------------|
+        '''
+        ```
 
 ## Usage
 
