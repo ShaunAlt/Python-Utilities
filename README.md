@@ -3,6 +3,18 @@ Contains a collection of various Python objects and methods that can be used to
 simplify the functionality of Flask web-based applications.
 
 ## Table of Contents
+- [Features](#features)
+    - [1. Decorators](#1-decorators)
+    - [2. Emails](#2-emails)
+    - [3. Error Handling](#3-error-handling)
+    - [4. Flask](#4-flask)
+    - [5. Forms](#5-forms)
+    - [6. Generic Functionality](#6-generic-functionality)
+    - [7. SQLAlchemy](#7-sqlalchemy)
+    - [8. UI](#8-ui)
+    - [9. XLSX](#9-xlsx)
+- [Usage](#usage)
+- [Contributors](#contributors)
 
 ## Features
 ### 1. *Decorators*
@@ -62,6 +74,48 @@ Includes:
             ```
 
 ### 2. *Emails*
+- Email Model
+    - Represents an individual email that can be sent to specified email
+        addresses, containing the given data.
+    - Implementation Example:
+        ``` python
+        # import email model
+        from email_utils import Email
+
+        # import io for in-memory file handling
+        import io
+
+        # import module logger
+        import logging
+
+        # create module logger
+        log = logging.getLogger('email model')
+
+        # create email object
+        new_email = Email(
+            to = ['foo@bar.com',],
+            subject = 'Test Subject Line',
+            html = '<h1>Hello World</h1><h2>Another test line</h2>',
+            logger = log,
+            bcc = None,
+            cc = ['bar@foo.com',]
+        )
+
+        # add attachments to the email
+        attachment_added = new_email.add_attachment(
+            file_name = 'test.pdf',
+            file_data = io.BytesIO()
+        )
+
+        # send email
+        email_sent_successfully = new_email.send(
+            smtp_server = 'SMTP Server Name',
+            smtp_port = 0,
+            smtp_sender = 'from@foo.bar.com',
+            bounce_address = 'bounce@foo.bar.com'
+        )
+        ```
+
 ### 3. *Error Handling*
 ### 4. *Flask*
 ### 5. *Forms*
