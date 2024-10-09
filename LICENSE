@@ -1,21 +1,35 @@
-MIT License
+# CCG Python-Utilities License
 
-Copyright (c) 2024 Shaun Altmann
+## 1. Ownership
+This software is owned by Christian College Geelong and is protected by 
+copyright law. All rights not explicitly granted are reserved by Christian
+College Geelong.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 2. Permitted Use
+This software may be used only be employees of Christian College Geelong or
+licensed users for internal business purposes. Redistribution, modification, or
+commercial use of this software outside of this scope is strictly prohibited
+without prior written consent from Christian College Geelong.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## 3. Restrictions
+You may not:
+- Redistribute, sublicense, or otherwise provide this software to third
+    parties.
+- Modify, reverse-engineer, or attempt to derive the source code of this
+    software.
+- Use this software for any illegal or unauthorized purpose.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+## 4. Disclaimer of Warranty
+This software is provided "as is" without warranty of any kind, either express
+or implied, including but not limited to the implied warranties of
+merchantability, fitness for a particular purpose, or non-infringement.
+
+## 5. Limitation of Liability
+In no event shall Christian College Geelong be liable for any direct, indirect,
+incidental, special, or consequential damages arising out of or related to the
+use of or inability to use this software, even if advised of the possibility of
+such damages.
+
+## 6. Governing Law
+This license is governed by and construed in accordance with the laws of
+Victoria, Australia.
