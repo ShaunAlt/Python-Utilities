@@ -496,18 +496,17 @@ Includes:
         ```
 
 ## Usage
+To convert this into a package that can be installed from a local directory
+using `pip`, you need to build the package using the following commands:
+``` bash
+python3 -m pip install --upgrade build
+python3 -m build
+```
+To then install this package in your virtual environment, go to the virtual
+environment and use the following command:
+``` bash
+python3 -m pip install /path/to/your/package/dist
+```
 
 ## Contributors
-
-
-
-Awards Software + PGP Software - will both be run.
-- Jason's replacement should know python - will be the back-end bug fixer.
-
-PGP Software:
-- Data import for Term 4. 
-
-
-Awards:
-- When normal staff have only a few classes - just immediately show them all of their classes.
-    - If admin - have heirarchy. Else - just show the classes.
+This project was created by Shaun Altmann (s.altmann@ccg.vic.edu.au).
