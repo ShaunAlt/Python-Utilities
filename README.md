@@ -117,6 +117,37 @@ Includes:
         ```
 
 ### 3. *Error Handling*
+- Error Handler
+    - Creates a new `Exception` containing all of the keyword and error
+        description data parsed. The purpose of this is to simplify the
+        creation of an `Exception` object when the developer wishes to parse
+        keyword information through (e.g. variables that could have been a 
+        factor in causing the exception to be thrown).
+    - Implementation Example:
+        ``` python
+        # import error handler
+        from error_utils import error_handler
+
+        # import module logger creator
+        import logging
+
+        # create module logger
+        log = logger.getLogger('error handler')
+
+        # function to divide values
+        def divide(a, b):
+            try:
+                return a / b
+            except:
+                raise error_handler(
+                    e = ValueError,
+                    desc = 'Unable to divide the values',
+                    log = log,
+                    a = a, # keyword argument
+                    b = b # keyword argument
+                )
+        ```
+
 ### 4. *Flask*
 ### 5. *Forms*
 ### 6. *Generic Functionality*
